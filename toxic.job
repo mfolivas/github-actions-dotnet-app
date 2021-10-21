@@ -1,0 +1,11 @@
+job.group=Experiments
+
+doDir=
+doDir1=
+doDir2=
+doDir3=
+
+job.init.script.0=
+job.init.script.1=
+job.init.script.2=
+job.init.script.100=

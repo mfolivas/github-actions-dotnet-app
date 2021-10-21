@@ -1,0 +1,3 @@
+[submodule "common/build"]
+	path = common/build
+	url = ssh://git.dev.mystackct.com/v1/repos/build

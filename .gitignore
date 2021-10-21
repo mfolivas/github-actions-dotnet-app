@@ -1,0 +1,33 @@
+# Visual Studio Code Settings
+.vscode
+
+# Rider stuff
+.idea
+app/*.DotSettings.user
+
+# Mac Finder
+.DS_Store
+
+# Output directories
+gen
+obj
+app/**/bin/
+node_modules
+karma_html
+
+# Generated Javascript/CSS
+app/src/CTKO.CombinedServer/wwwroot/
+nightwatch/dist
+
+# NPM
+# Don't ignore this file or all environments will be inconsistent
+#package-lock.json
+
+# Selenium
+selenium.out
+
+# Toxic
+toxic.pid
+
+# dotnet config
+global.json
