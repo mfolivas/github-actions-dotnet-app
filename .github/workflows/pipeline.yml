@@ -7,6 +7,8 @@ on:
     branches: [ main ]
 
 env:
+  AZURE_WEBAPP_NAME: dotNetDemoWebApp
+  AZURE_WEBAPP_PACKAGE_PATH: app/src/Sample/bin/Debug/net5.0/Sample.dll
   DOTNET_VERSION: '5.0.x'
 
 jobs:
@@ -30,3 +32,10 @@ jobs:
     - name: Setup Docker buildx
       uses: docker/setup-buildx-action@v1
       id: buildx
+
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
