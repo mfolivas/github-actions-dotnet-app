@@ -29,9 +29,14 @@ jobs:
     - name: Test
       run: make local-test
 
-    - name: Setup Docker buildx
-      uses: docker/setup-buildx-action@v1
-      id: buildx
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      name: Build & push Docker image
+      with:
+        image: mfolivas/dotnet-app
+        tags: v1, latest
+        registry: docker.io
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
