@@ -1,5 +1,5 @@
 # Github Actions Sample
-This project uses a project using a .Net core application, add dependencies, does the test checks, builds a `Docker` image, and sends it to a `Docker` container.
+This project uses a project using a .Net core application, add dependencies, does the test checks, builds a `Docker` image, and sends it to a `Docker` container.  The CI/CD will then host the docker container in an Azure App Service.
 
 ## Azure App Service
 I also try to mimic how to deploy to an existing Azure App Service plan.
@@ -30,13 +30,6 @@ az webapp create \
     --plan $appServicePlan \
     --resource-group $resourceGroup \
     --deployment-container-image-name $dockerImage
-
-az webapp create \
-  --name $webApp \
-  --plan $appServicePlan \
-  --resource-group $resourceGroup \
-  --deployment-container-image-name $dockerImage
-
 ```
 
 A publish profile is an app-level credential. Set up your publish profile as a GitHub secret.
