@@ -13,6 +13,7 @@ resourceGroup=appServiceDemoGroup
 appServicePlan=demoAppService
 webApp=dotNetDemoWebApp
 runTime="DOTNET|5.0"
+dockerImage="mfolivas/dotnet-app:latest"
 location=eastus
 
 az group create --name $resourceGroup --location $location
@@ -28,7 +29,14 @@ az webapp create \
     --name $webApp \
     --plan $appServicePlan \
     --resource-group $resourceGroup \
-    --runtime $runTime
+    --deployment-container-image-name $dockerImage
+
+az webapp create \
+  --name $webApp \
+  --plan $appServicePlan \
+  --resource-group $resourceGroup \
+  --deployment-container-image-name $dockerImage
+
 ```
 
 A publish profile is an app-level credential. Set up your publish profile as a GitHub secret.

@@ -9,6 +9,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: dotNetDemoWebApp
   AZURE_WEBAPP_PACKAGE_PATH: app/src/Sample/bin/Debug/net5.0/Sample.dll
+  DOCKER_IMAGE: mfolivas/dotnet-app
   DOTNET_VERSION: '5.0.x'
 
 jobs:
@@ -32,7 +33,7 @@ jobs:
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
-        image: mfolivas/dotnet-app
+        image: ${{ env.DOCKER_IMAGE }}
         tags: v1, latest
         registry: docker.io
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -43,4 +44,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        images: ${{ env.DOCKER_IMAGE }}:latest
