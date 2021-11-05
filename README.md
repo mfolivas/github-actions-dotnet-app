@@ -44,4 +44,3 @@ To delete everything:
 ```
 az group delete --name $resourceGroup --yes --no-wait
 ```
-
